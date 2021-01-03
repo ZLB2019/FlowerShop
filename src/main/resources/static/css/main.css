@@ -1,0 +1,137 @@
+html,body{
+    width:100%;
+    height:100%
+}
+
+.btn-outline-primary{
+    border-style: solid;
+    border-color: #0069d9;
+    border-width: 1px;
+    font-size: 15px;
+}
+
+.font-weight-normal{
+    font-size: 20px;
+}
+
+
+.logo_con {
+    width: 98px;
+    height: 95px;
+    position: absolute;
+    left: 71px;
+    top: -9px;
+    float: left;
+}
+
+.school_logo_con{
+    float: left;
+    position: absolute;
+    left:40%;
+    top: -9px;
+    width: 20%;
+    height: 75px;
+}
+
+.online_test{
+    font-size: 100px;
+    text-align:center;
+    font-weight: bold;
+    margin-top: 0;
+}
+.mid{
+    height: 150px;
+    width: 1000px;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.dianMing_con{
+    width: 300px;
+    height: 127px;
+}
+
+.search_input{
+    height: 40px;
+    width: 430px;
+    cursor: text;
+}
+
+.search_btn{
+    height: 41px;
+    width: 100px;
+    background-color: #e83e8c;
+    color: white;
+    margin-left: -5px;
+    border-bottom: 0;
+    margin-top: -3px;
+}
+
+.car_con{
+    width: 80px;
+    height: 83px;
+    margin-top: -17px;
+    margin-left: 40px;
+}
+
+.Carousel{
+    width: 1500px;
+    height: 400px;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.carousel-inner .item img{
+    float: left;
+    width: 900px;
+    height: 400px;
+}
+
+.carousel-control{
+    left: 310px;
+}
+
+.right{
+    right:310px !important;
+    left:auto;
+}
+
+.right_flower,
+.left_flower{
+    float: left;
+    height: 400px;
+    width: 300px;
+}
+
+.row{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.col-sm-6{
+    float: left;
+    width: 25%;
+}
+
+.thumbnail img{
+    height: 250px;
+}
+
+.class_title{
+    font-size: 30px;
+    font-weight: bold;
+    color: #e83e8c;
+    width: 1200px;
+    border-color: #ed969e;
+    border-bottom: solid;
+    border-bottom-width: 5px;
+    margin: 30px 160px 30px 170px;
+
+}
+
+.bottom a{
+    margin: 5px;
+}
+.bottom p{
+     margin-top: 15px;
+ }

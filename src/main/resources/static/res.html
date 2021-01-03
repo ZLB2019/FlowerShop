@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>注 册</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+    <link href="other/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<div class="form-signin" id="login_con">
+    <img class="mb-4" src="image/logo/logo.png" alt="" width="150" height="150">
+    <h1 class="h3 mb-3 font-weight-normal">请 注 册</h1>
+    <input type="text" name="user_email" v-model="user_email" id="inputEmail" class="form-control" placeholder="邮箱" style="margin-bottom: 10px"  autofocus>
+    <input type="password" name="user_password"v-model="user_password" id="inputPassword" class="form-control" placeholder="密码" required>
+    <input type="password" name="user_password_two"v-model="user_password_two" id="inputPassword_two" class="form-control" placeholder="确认密码"  required>
+    <div style="height: 46px;width: 300px;margin-bottom: 10px;">
+        <input type="text" name="VerificationCode"v-model="VerificationCode" id="VerificationCode" class=""  style="width: 150px;height: 46px;padding: 10px;" placeholder="验证码" required>
+        <button class="btn btn-lg btn-primary btn-block" type="botton" style="width: 135px;float: left;margin-right: 10px" v-on:click="InputJudge(0)">发送验证码</button>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="botton" v-on:click="InputJudge(1)">注册</button>
+    <div style="margin-top: 40px !important;">
+        <a href="login.html" class="mt-5 mb-3 text-muted" >&copy; 网上花店登录</a>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/res.js"></script>
+</html>

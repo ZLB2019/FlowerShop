@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-model="http://www.w3.org/1999/xhtml" xmlns:v-mode="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+</head>
+<body>
+<!doctype html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>FlowerShop</title>
+    <link href="other/dist/css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="css/pricing.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/car.css" rel="stylesheet">
+</head>
+<body>
+<style>
+    .mid {
+        width: 1200px;
+        height: 100px;
+    }
+    .dianMing_con {
+        width: 195px;
+        height: 61px;
+        margin-left: -89px;
+    }
+</style>
+<div id="PUB">
+    <div id="title_top" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">ZLB</h5>
+        <a href="main.html">
+            <img src="image/logo/logo.png" class="logo_con">
+        </a>
+        <p id="user_name_show"  v-bind:style="user_name_css">用户名：<span>{{user_name}}</span></p>
+        <a class="btn btn-outline-primary" style="margin-right: 30px"  href="login.html">{{type}}</a>
+        <a class="btn btn-outline-primary" style="margin-right: 50px" href="res.html">注册</a>
+        <button type="button" class="btn btn-link" onclick="window.location.href='/flower_shop/order.html';">我的订单</button>
+    </div>
+
+
+    <div class="mid">
+        <img src="image/logo/shopName.png" class="dianMing_con" style="float: left">
+        <div style="float: right;margin-top: 15px">
+            <input class="search_input" type="text" ref="selectInput" placeholder="搜索">
+            <button class="btn btn-default search_btn"  v-on:click="selectFlower(1)" type="button">搜索</button>
+        </div>
+    </div>
+
+    <div class="class_title">
+        全部商品 {{carList.length}}
+    </div>
+    <div class="car" v-for="(item,index) in carList">
+        <div class="car_item">
+            <img  v-bind:src="item.image">
+            <p>{{item.flowerName}}</p>
+            <p>￥{{item.price}}</p>
+            <div class="number">
+                <input type="text" class="number_input" v-model="item.number">
+                <div class="jia" style="cursor:pointer" v-on:click="changeNumber(1,index)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></div>
+                <div class="jian" style="cursor:pointer" v-on:click="changeNumber(0,index)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></div>
+            </div>
+            <p>￥{{item.price*item.number}}</p>
+            <a href="javascript:void(0)" v-on:click="delCar(index)">删除</a>
+            <button  type="button" v-on:click="addOrder(index)" class="btn btn-danger" data-toggle="modal" data-target="#Buy" style="margin-left: 20px;width:100px;">确 定 购 买</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/car.js"></script>
+</html>
+
+</body>
+</html>

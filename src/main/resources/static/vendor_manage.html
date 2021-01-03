@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>厂商管理</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="PUB">
+    <div style="margin-top: 15px;margin-bottom: 15px;height: 46px">
+        <button type="button" class="btn btn-primary btn-lg" v-on:click="AllVendor" style="float: left;margin-left: 35px">查 看 所 有 厂 商</button>
+        <button class="btn  btn-success btn-lg" data-toggle="modal" style="float: left;margin-left: 50px" data-target="#Insert">添 加 厂 商</button>
+        <button type="button" class="btn btn-warning btn-lg" style="float: left;margin-left: 50px" data-toggle="modal" data-target="#Select">查 找 厂 商</button>
+        <button type="button" class="btn btn-default btn-lg" v-on:click="Return_Adm" style="float: right;margin-right: 35px">&nbsp;&nbsp;&nbsp;返 回&nbsp;&nbsp;&nbsp;</button>
+    </div>
+
+    <table class="table table-striped" style="text-align: center">
+        <tr>
+            <th style="width: 10%;text-align: center">#</th>
+            <th style="width: 10%;text-align: center">id</th>
+            <th style="width: 20%;text-align: center">厂商</th>
+            <th style="width: 30%;text-align: center">操作</th>
+        </tr>
+        <tr v-for="(item, index) in vendor_list">
+            <td>{{index+1}}</td>
+            <td>{{item.vendorId}}</td>
+            <td>{{item.vendorName}}</td>
+            <td>
+                <button type="button" v-on:click="UpdateVendor(index)" class="btn btn-info" data-toggle="modal"  data-target="#Update" style="margin-right: 25px">编 辑</button>
+                <button type="button" v-on:click="DeleteVendor(index)" class="btn btn-danger"  data-toggle="modal" data-target="#Delete">删 除</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- 添加 -->
+    <div class="modal fade" id="Insert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">
+                        添加
+                    </h4>
+                </div>
+                <div>
+                    <p style="font-weight: bold;font-size: 20px">厂商名:</p>
+                    <input ref="insert_name" class="modal-body" style="width: 100%" type="text"  placeholder="厂商名"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" v-on:click="InsertVendor" class="btn btn-primary" data-dismiss="modal">
+                        添加厂商
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑 -->
+    <div class="modal fade" id="Update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        编辑
+                    </h4>
+                </div>
+                <div>
+                    <p style="font-weight: bold;font-size: 20px">id:</p>
+                    <p ref="update_id" style="margin-left:10px;font-size: 13px"></p>
+                </div>
+                <div>
+                    <p style="font-weight: bold;font-size: 20px">厂商名:</p>
+                    <input ref="update_name" class="modal-body" style="width: 100%" type="text"  placeholder="厂商名"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" v-on:click="UpdateVendorSubmit" class="btn btn-primary" data-dismiss="modal">
+                        提交更改
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除 -->
+    <div ref="DEL" class="modal fade" id="Delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        删除
+                    </h4>
+                </div>
+                <p style="font-size: 15px">
+                    <span style="display: none" ref="delete_id"></span>
+                    确定删除"<span style="font-weight: bold" ref="delete_name"></span>"这个厂商吗？
+                </p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取消
+                    </button>
+                    <button type="button" v-on:click="DeleteVendorSubmit" class="btn btn-primary" data-dismiss="modal">
+                        确定删除
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 查找 -->
+    <div class="modal fade" id="Select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" >
+                        查找
+                    </h4>
+                </div>
+                <div>
+                    <p style="font-weight: bold;font-size: 20px">厂商名:</p>
+                    <input ref="select_name"  class="modal-body" style="width: 100%" type="text"  placeholder="厂商名"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" v-on:click="SelectClass" class="btn btn-primary" data-dismiss="modal">
+                        查找厂商
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/vendor_manage.js"></script>
+</html>

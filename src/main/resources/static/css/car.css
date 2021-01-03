@@ -1,0 +1,71 @@
+.car{
+     width: 1200px;
+     margin: 10px auto;
+ }
+
+.car .car_item{
+    width: 1200px;
+    border: black solid 1px;
+    height: 150px;
+    align-items: center;
+}
+
+.car .car_item .choose{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-top: 65px;
+    margin-left: 25px;
+}
+
+.car .car_item img{
+    width: 100px;
+    height: 100px;
+    margin-top: 25px;
+    margin-left: 25px;
+    float: left;
+}
+
+.car .car_item p,
+.car .car_item a{
+    width: 100px;
+    margin-left: 4%;
+    float: left;
+    margin-top: 40px;
+    font-size: 15px;
+}
+
+.car .car_item a{
+    color: red;
+    margin-left: 10%;
+}
+
+.car .car_item button{
+    color: white;
+    margin-right: 40px;
+    float: right;
+    margin-top: 40px;
+}
+
+.car .car_item .number{
+    width: 200px;
+    height: 100px;
+    float: left;
+    margin-left: 4%;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.car .car_item .number_input{
+    float: left;
+    width: 50px;
+    height: 30px;
+}
+
+.car .car_item .jia,
+.car .car_item .jian{
+    float: left;
+    width: 30px;
+    height: 30px;
+    border: black solid 1px;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>商品管理</title>
+	<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/axios.min.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/flower_manage.js"></script>
+</head>
+<body>
+
+		<div class="admin" id="app">
+			<div class="admin-content">
+				<div class="edit">
+					<div class="avatar">
+						<div class="img">
+							<img :src="avatar" @click="setAvatar">
+							<!-- <span>更改</span> -->
+							<input type="file" name="avatar" accept="image/gif,image/jpeg,image/jpg,image/png" style="display:none" @change="changeImage($event)"
+							 ref="avatarInput">
+						</div>
+
+					</div>
+					<button type="button" @click="edit">确认修改</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+                    avatar:'image/flower/default.jpg'
+				},
+				methods: {
+					edit:function() {
+						// 修改了头像
+						if (this.$refs.avatarInput.files.length !== 0) {
+							var image = new FormData();
+							image.append('image', this.$refs.avatarInput.files[0]);
+							var headers = {headers: {"Content-Type": "multipart/form-data"}};
+							axios.post('/flower_shop/FlowerManage/upload',image,headers)
+									.then(function (response) {
+										that.image_path = response.data.url;
+										console.log(response.data.url);
+									}).then(function (response) {
+							})
+						}
+					},
+			setAvatar:function () {
+				this.$refs.avatarInput.click()
+			},
+			changeImage:function (e) {
+				var file = e.target.files[0]
+				var reader = new FileReader()
+				var that = this
+				reader.readAsDataURL(file)
+				reader.onload = function(e) {
+					that.avatar = this.result
+				}
+			}
+			}})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <title>登 陆</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+    <link href="other/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+   <div class="form-signin" id="login_con">
+  <img class="mb-4" src="image/logo/logo.png" alt="" width="150" height="150">
+  <h1 class="h3 mb-3 font-weight-normal">请 登 录</h1>
+  <input type="text" name="user_email" v-model="user_email" id="inputEmail" class="form-control" placeholder="邮箱"  autofocus>
+  <input type="password" name="user_password"v-model="user_password" id="inputPassword" class="form-control" placeholder="密码" required>
+  <button class="btn btn-lg btn-primary btn-block" type="botton" v-on:click="InputJudge">登录</button>
+       <div style="margin-top: 40px !important;">
+           <a href="res.html" class="mt-5 mb-3 text-muted" >&copy; 网上花店注册</a>
+       </div>
+</div>
+</body>
+  <script type="text/javascript" src="js/axios.min.js"></script>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+</html>
